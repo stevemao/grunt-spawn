@@ -29,8 +29,7 @@ It is also good to create yourself a package.json file and emebed it in the depe
       "description": "my-project",
       "keywords": [
         "grunt",
-        "spawn", 
-        "gruntplugin"
+        "spawn"
       ],
       "repository": {
         "type": "git",
