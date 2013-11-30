@@ -1,27 +1,30 @@
 {
-  "name": "markdown-walker",
-  "version": "0.0.1",
+  "name": "grunt-spawn",
+  "version": "1.1.54",
   "private": false,
   "author": "fir3pho3nixx@gmail.com",
-  "description": "A utility for walking a directory structure and parsing markdown to html",
+  "description": "A process launcher that does what it says on the tin",
   "keywords": [
-    "markdown",
-    "showdown",
-    "file",
-    "walker",
-    "parser"
+    "grunt",
+    "spawn",
+    "shell",
+    "cmd",
+    "command",
+    "exec",
+    "execute",
+    "gruntplugin"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/fir3pho3nixx/markdown-walker.git"
+    "url": "https://github.com/fir3pho3nixx/grunt-spawn.git"
   },
   "dependencies": {
-    "showdown": "~0.3.1",
-    "fs-tools": "~0.2.10",
-    "lodash": "~2.3.0",
-    "string-format": "~0.2.1",
-    "string": "~1.7.0",
-    "grunt-spawn": "~1.1.52"
+    "async": "*",
+    "lodash": "*",
+    "string": "*",
+    "fs-tools": "*",
+    "string-format": "*",
+    "minimatch": "*"
   },
   "devDependencies": {
     "mocha": "*",
