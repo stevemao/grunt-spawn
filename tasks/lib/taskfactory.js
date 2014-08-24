@@ -83,7 +83,7 @@ function TaskFactory(task) {
 		return files;
 	};
 
-	self.createTask = function(fileOrFiles){
+	self.createTask = function(fileOrFiles) {
 		var config = self.config.get();
 		var args = self.format(config.commandArgs, fileOrFiles);
 		var taskArgs = new TaskArgs(config.command, args, config.opts);
@@ -98,21 +98,29 @@ function TaskFactory(task) {
 		var tasks = [];
 		var config = self.config.get();
 
-		var files = self.getAllFiles();
-		var filteredFiles = self.filterFiles(files);
+		console.log('buildTasks -> ');
+		console.log(config.passThrough);
 
-		if (config.useQuotes)
-			filteredFiles = self.quoteWith(config.quoteDelimiter, filteredFiles);
+		if (!config.passThrough) {
+			var files = self.getAllFiles();
+			var filteredFiles = self.filterFiles(files);
 
-		if (config.groupFiles) {
-			var groupedFiles = filteredFiles.join(config.fileDelimiter);
-			var task = self.createTask(groupedFiles);
-			tasks.push(task);
-		} else {
-			_(filteredFiles).each(function(file) {
-				var task = self.createTask(file);
+			if (config.useQuotes)
+				filteredFiles = self.quoteWith(config.quoteDelimiter, filteredFiles);
+
+			if (config.groupFiles) {
+				var groupedFiles = filteredFiles.join(config.fileDelimiter);
+				var task = self.createTask(groupedFiles);
 				tasks.push(task);
-			});
+			} else {
+				_(filteredFiles).each(function(file) {
+					var task = self.createTask(file);
+					tasks.push(task);
+				});
+			}
+		} else {
+			var task = self.createTask('');
+			tasks.push(task);
 		}
 
 		grunt.log.debug(self.__type__ + "buildTasks(result=void) <-");

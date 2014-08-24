@@ -19,6 +19,7 @@ module.exports = function(grunt) {
         quoteDelimiter: "\"",
         groupFiles: true,
         fileDelimiter: " ", 
+        passThrough: true,
         ignore: ["gruntfile.js"]
       },
       list: {

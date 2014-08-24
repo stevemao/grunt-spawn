@@ -55,6 +55,8 @@ describe("Given TaskFactory() with files", function() {
 
 		var tasks = taskFactory.buildTasks();
 
+		console.log(tasks);
+
 		var files = 
 			(new FileBuilder())
 				.setDirectory(__dirname)
