@@ -98,9 +98,6 @@ function TaskFactory(task) {
 		var tasks = [];
 		var config = self.config.get();
 
-		console.log('buildTasks -> ');
-		console.log(config.passThrough);
-
 		if (!config.passThrough) {
 			var files = self.getAllFiles();
 			var filteredFiles = self.filterFiles(files);
