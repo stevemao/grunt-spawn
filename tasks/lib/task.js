@@ -47,7 +47,7 @@ function Task(taskArgs) {
 
 		if (self.taskArgs.config && self.taskArgs.config.dontWait) {
 			var command = self.taskArgs.cmd + " " + self.taskArgs.args.join(" ");
-			childProcess.exec(command);
+			childProcess.exec(command, taskArgs.opts);
 			if (done != null) done(0);
 		} else {
 			var spawn = grunt.util.spawn(self.taskArgs, function() {});
