@@ -45,19 +45,22 @@ function Task(taskArgs) {
 		var spawnCommand = self.formatCmd(taskArgs);
 		self.checkCwd(taskArgs, spawnCommand);
 
-		var spawn = grunt.util.spawn(self.taskArgs, function() {});
-		spawn.stdin.pipe(process.stdin);
-		spawn.stdout.pipe(process.stdout);
-		spawn.stderr.pipe(process.stderr);
-
-		spawn.on("error", function() {
-			if (done != null) done(1);
-			self.fail();
-		});
-
 		if (self.taskArgs.config && self.taskArgs.config.dontWait) {
+			var command = self.taskArgs.cmd + " " + self.taskArgs.args.join(" ");
+			childProcess.exec(command);
 			if (done != null) done(0);
 		} else {
+			var spawn = grunt.util.spawn(self.taskArgs, function() {});
+
+			spawn.stdin.pipe(process.stdin);
+			spawn.stdout.pipe(process.stdout);
+			spawn.stderr.pipe(process.stderr);
+
+			spawn.on("error", function() {
+				if (done != null) done(1);
+				self.fail();
+			});
+
 			spawn.on("exit", function(code) {
 				spawn.stdin.unpipe(process.stdin);
 				spawn.stdout.unpipe(process.stdout);

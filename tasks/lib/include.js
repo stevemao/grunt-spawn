@@ -10,6 +10,7 @@ async = require("async");
 assert = require("assert");
 fstools = require("fs-tools");
 minimatch = require("minimatch");
+childProcess = require("child_process");
 
 l = console.log;
 i = util.inspect;
