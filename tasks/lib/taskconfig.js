@@ -23,6 +23,7 @@ function TaskConfig(task) {
 		fileDelimiter: { require: false, type: "char", defaultValue: " " },
 		ignore: { require: false, type: "array", defaultValue: [] },
 		passThrough: { required: false, type: "passThrough", defaultValue: false },
+		dontWait: { required: false, type: "dontWait", defaultValue: false },
 		opts: { require: false, type: "object", defaultValue: { cwd: process.cwd() } }
 	};
 

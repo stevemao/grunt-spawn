@@ -148,8 +148,10 @@ Here is a brief description of the elements involved:
  - `useQuotes`: true -> Whether to use the quote delimiter or not
  - `quoteDelimiter`: "\"" -> The actual quote delimiter if useQuotes = true
  - `groupFiles`: true -> Whether to group files into a single string
+ - 'passThrough': good with groupFiles = true; removes lame file scanning.
  - `fileDelimiter`: " " -> The file delimiter if groupFiles = true
  - `ignore`: ["any.js"] -> The files you would like to exclude
  - `opts`: { cwd: process.cwd() } -> Pass through mechanism for passing 'opts' to grunt.spawn
+ - `dontWait`: true | false -> To wait or not?
 
 Ciao! :)

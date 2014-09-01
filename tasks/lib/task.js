@@ -55,13 +55,17 @@ function Task(taskArgs) {
 			self.fail();
 		});
 
-		spawn.on("exit", function(code) {
-			spawn.stdin.unpipe(process.stdin);
-			spawn.stdout.unpipe(process.stdout);
-			spawn.stderr.unpipe(process.stderr);
-			if (done != null) done(code);
-			if (code !== 0) self.fail(done);
-		});
+		if (self.taskArgs.config && self.taskArgs.config.dontWait) {
+			if (done != null) done(0);
+		} else {
+			spawn.on("exit", function(code) {
+				spawn.stdin.unpipe(process.stdin);
+				spawn.stdout.unpipe(process.stdout);
+				spawn.stderr.unpipe(process.stderr);
+				if (done != null) done(code);
+				if (code !== 0) self.fail(done);
+			});
+		}
 
 		grunt.log.debug(self.__type__ + "execute(result=void) <-");
 	};

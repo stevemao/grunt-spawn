@@ -20,6 +20,7 @@ module.exports = function(grunt) {
         groupFiles: true,
         fileDelimiter: " ", 
         passThrough: true,
+        dontWait: false,
         ignore: ["gruntfile.js"]
       },
       list: {

@@ -87,6 +87,7 @@ function TaskFactory(task) {
 		var config = self.config.get();
 		var args = self.format(config.commandArgs, fileOrFiles);
 		var taskArgs = new TaskArgs(config.command, args, config.opts);
+		taskArgs.config = config;
 		var task = new Task(taskArgs);
 		return task;
 	};
