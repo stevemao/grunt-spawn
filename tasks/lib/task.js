@@ -52,9 +52,9 @@ function Task(taskArgs) {
 		} else {
 			var spawn = grunt.util.spawn(self.taskArgs, function() {});
 
-			spawn.stdin.pipe(process.stdin);
-			spawn.stdout.pipe(process.stdout);
-			spawn.stderr.pipe(process.stderr);
+			spawn.stdin && spawn.stdin.pipe(process.stdin);
+			spawn.stdout && spawn.stdout.pipe(process.stdout);
+			spawn.stderr && spawn.stderr.pipe(process.stderr);
 
 			spawn.on("error", function() {
 				if (done != null) done(1);
@@ -62,9 +62,9 @@ function Task(taskArgs) {
 			});
 
 			spawn.on("exit", function(code) {
-				spawn.stdin.unpipe(process.stdin);
-				spawn.stdout.unpipe(process.stdout);
-				spawn.stderr.unpipe(process.stderr);
+				spawn.stdin && spawn.stdin.unpipe(process.stdin);
+				spawn.stdout && spawn.stdout.unpipe(process.stdout);
+				spawn.stderr && spawn.stderr.unpipe(process.stderr);
 				if (done != null) done(code);
 				if (code !== 0) self.fail(done);
 			});
