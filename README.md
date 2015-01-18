@@ -53,7 +53,7 @@ It is also good to create yourself a package.json file and emebed it in the depe
 
 ### gruntfile.js
 
-You can use the following example to setup your grunt file. 
+You can use the following example to setup your grunt file. To get you started.
 
     path = require("path");
 
@@ -154,4 +154,64 @@ Here is a brief description of the elements involved:
  - `opts`: { cwd: process.cwd() } -> Pass through mechanism for passing 'opts' to grunt.spawn
  - `dontWait`: true | false -> To wait or not?
 
-Ciao! :)
+## More Examples?
+
+Here is a further example of how you would create a start/wait task for express. This 
+was tested with express v4.11.0. Notice how we use opts to override stdio. This is 
+passed to nodejs spawn. 
+
+### When to 'groupFiles'
+
+If you are not scanning for any wildcard patterns and you would like to pass your
+arguments as a space separated array to a single command then you would need to 
+set this option to true. If you dont, then each result found within the wildcard
+matching pattern will be run individually again the command. So if three files are 
+found, the command will be run 3 times. 
+
+### When to 'passThrough'
+
+If you are not interested in scanning the filesystem and have a command that does
+not require any input from grunt-spawn then you can use this option. This will 
+bypass any scanning done on the current directory. This can dramatically speed
+up what you are trying to do. 
+
+/*global module:false*/
+module.exports = function(grunt) {
+
+  // Project configuration.
+  grunt.initConfig({
+
+    pkg: grunt.file.readJSON('package.json'),
+
+    // *** - grunt-spawn: WebStart for Express {Start}
+    spawn: {
+      webstart: {
+        command: 'node',
+        commandArgs: ['{0}'],
+        directory: './',
+        groupFiles: true, 
+        passThrough: false,
+        pattern: 'www',
+        opts: {
+          stdio: 'inherit',
+          cwd: __dirname + '/'
+        }
+      }
+    // *** - grunt-spawn: WebStart for Express {End}
+    }
+  });
+
+  // Grunt plugins.
+  grunt.loadNpmTasks('grunt-spawn');
+  grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-qunit');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+
+  // Default task.
+  grunt.registerTask('default', ['spawn:webstart']);
+
+};
+
+Any problems, please raise issues. 
