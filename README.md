@@ -175,43 +175,42 @@ not require any input from grunt-spawn then you can use this option. This will
 bypass any scanning done on the current directory. This can dramatically speed
 up what you are trying to do. 
 
-/*global module:false*/
-module.exports = function(grunt) {
+    module.exports = function(grunt) {
 
-  // Project configuration.
-  grunt.initConfig({
+      // Project configuration.
+      grunt.initConfig({
 
-    pkg: grunt.file.readJSON('package.json'),
+        pkg: grunt.file.readJSON('package.json'),
 
-    // *** - grunt-spawn: WebStart for Express {Start}
-    spawn: {
-      webstart: {
-        command: 'node',
-        commandArgs: ['{0}'],
-        directory: './',
-        groupFiles: true, 
-        passThrough: false,
-        pattern: 'www',
-        opts: {
-          stdio: 'inherit',
-          cwd: __dirname + '/'
+        // *** - grunt-spawn: WebStart for Express {Start}
+        spawn: {
+          webstart: {
+            command: 'node',
+            commandArgs: ['{0}'],
+            directory: './',
+            groupFiles: true, 
+            passThrough: false,
+            pattern: 'www',
+            opts: {
+              stdio: 'inherit',
+              cwd: __dirname + '/'
+            }
+          }
+        // *** - grunt-spawn: WebStart for Express {End}
         }
-      }
-    // *** - grunt-spawn: WebStart for Express {End}
-    }
-  });
+      });
 
-  // Grunt plugins.
-  grunt.loadNpmTasks('grunt-spawn');
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-qunit');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-watch');
+      // Grunt plugins.
+      grunt.loadNpmTasks('grunt-spawn');
+      grunt.loadNpmTasks('grunt-contrib-concat');
+      grunt.loadNpmTasks('grunt-contrib-uglify');
+      grunt.loadNpmTasks('grunt-contrib-qunit');
+      grunt.loadNpmTasks('grunt-contrib-jshint');
+      grunt.loadNpmTasks('grunt-contrib-watch');
 
-  // Default task.
-  grunt.registerTask('default', ['spawn:webstart']);
+      // Default task.
+      grunt.registerTask('default', ['spawn:webstart']);
 
-};
+    };
 
 Any problems, please raise issues. 
