@@ -175,6 +175,11 @@ not require any input from grunt-spawn then you can use this option. This will
 bypass any scanning done on the current directory. This can dramatically speed
 up what you are trying to do. 
 
+### Express example
+
+Here is an example that launches and provides feedback from express in a blocking way. You
+have to CTRL-C to exit.
+
     module.exports = function(grunt) {
 
       // Project configuration.
@@ -213,7 +218,7 @@ up what you are trying to do.
 
     };
 
-###Sample Output
+###Express example output
 
 Included some example output from an express process. 
 
