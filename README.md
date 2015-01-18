@@ -213,4 +213,18 @@ up what you are trying to do.
 
     };
 
+###Sample Output
+
+Included some example output from an express process. 
+
+    Running "spawn:webstart" (spawn) task
+
+
+    <grunt-spawn/>: Launching child process
+    >> <grunt-spawn/>: Launching 'node bin/www' starting in '/usr/local/src/nodejs/poly-plates' overridden with cwd='/usr/local/src/nodejs/poly-plates/'
+    GET / 304 314.669 ms - -
+    GET /stylesheets/style.css 304 5.350 ms - -
+    GET /favicon.ico 404 57.264 ms - 1186
+
+
 Any problems, please raise issues. 
