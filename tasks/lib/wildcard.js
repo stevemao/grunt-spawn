@@ -16,9 +16,8 @@ function Wildcard() {
 	self.matchArray = function(pattern, values) {
 		grunt.log.debug(self.__type__ + "matchArray(pattern={0}, values={1}) ->".format(pattern, values));
 		var results = [];
-		var _values = _(values);
 		if (self.isArrayAndNotNull(values)) {
-			_values.each(function(value) {
+			_.each(values, function(value) {
 				if (minimatch(value, pattern, {
 					matchBase: true
 				})) {

@@ -1,4 +1,4 @@
-require("string-format");
+var format = require("string-format");
 
 fs = require("fs");
 S = require("string");
@@ -15,3 +15,4 @@ childProcess = require("child_process");
 l = console.log;
 i = util.inspect;
 ll = function(val) { l(i(val)); }
+format.extend(String.prototype)

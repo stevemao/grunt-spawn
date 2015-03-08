@@ -34,7 +34,7 @@ function TaskFactory(task) {
 	self.quoteWith = function(delimiter, stringArray) {
 		grunt.log.debug(self.__type__ + "quoteWith(delimiter={0}, stringArray={1}) ->".format(delimiter, stringArray));
 		var result = [];
-		_(stringArray).each(function(str) {
+		_.each(stringArray, function(str) {
 			result.push(delimiter + str + delimiter);
 		});
 		grunt.log.debug(self.__type__ + "quoteWith(result={0}) <-".format(result));
@@ -44,7 +44,7 @@ function TaskFactory(task) {
 	self.shouldIgnore = function(file) {
 		grunt.log.debug(self.__type__ + "shouldIgnore(file={0}) ->".format(file));
 		var result = false;
-		_(self.config.get().ignore).each(function(ignoreFile) {
+		_.each(self.config.get().ignore, function(ignoreFile) {
 			if (S(file).endsWith(ignoreFile)) {
 				result = true;
 			}
@@ -56,7 +56,7 @@ function TaskFactory(task) {
 	self.filterIgnoredFiles = function(files) {
 		grunt.log.debug(self.__type__ + "filterIgnoredFiles(files={0}) ->".format(files));
 		var result = [];
-		_(files).each(function(file) {
+		_.each(files, function(file) {
 			if (!self.shouldIgnore(file))
 				result.push(file);
 		});
@@ -102,7 +102,6 @@ function TaskFactory(task) {
 		if (!config.passThrough) {
 			var files = self.getAllFiles();
 			var filteredFiles = self.filterFiles(files);
-
 			if (config.useQuotes)
 				filteredFiles = self.quoteWith(config.quoteDelimiter, filteredFiles);
 
@@ -111,7 +110,7 @@ function TaskFactory(task) {
 				var task = self.createTask(groupedFiles);
 				tasks.push(task);
 			} else {
-				_(filteredFiles).each(function(file) {
+				_.each(filteredFiles, function(file) {
 					var task = self.createTask(file);
 					tasks.push(task);
 				});

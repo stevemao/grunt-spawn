@@ -59,7 +59,7 @@ function TaskConfig(task) {
 	self.get = function(){
 		grunt.log.debug(self.__type__ + "get() ->");
 		var result = {};
-		_(self.propertyDefinitions).forIn(function(value, key, object){
+		_.forIn(self.propertyDefinitions, function(value, key, object){
 			var propertyValue = value.defaultValue;
 			if (value.required)
 				self.throwIfPropertyNotFound(key, value);

@@ -25,13 +25,11 @@ function FileBuilder() {
 				directory = path.normalize(directory);
 				results.push(directory);
 			});
-		results = _(results)
-			.unique()
-			.each(function(directory){
-				directoryCallback(directory);
-			});
+		results = _.unique(results);
+		_.each(results, function(directory){
+			directoryCallback(directory);
+		});
 	}
-
 
 	self.allDirectories = function(){
 		var results = [];
