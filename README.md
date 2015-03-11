@@ -1,11 +1,14 @@
 grunt-spawn [![Build Status](https://travis-ci.org/fir3pho3nixx/grunt-spawn.png?branch=master)](https://travis-ci.org/fir3pho3nixx/grunt-spawn)
 ===========
 
-A process launcher that does what it says on the tin
+A process launcher designed for when you dont have a grunt plugin, or know the console command but cannot be bothered adding yet
+another plugin to your arsenal of tools :)
+
+Sometimes bootstrapping the console is the simplist way and removes a layer of abstraction between you as the developer and the kind of automation you need. I also found it particularly useful for teaching javascript automation in a predominently C# environment where knowledge of javascript is zero to none. 
 
 ## What is this?
 
-This project is a plugin for Grunt.JS that gives one the ability to spawn processes. This project has not been tested on windows but I am sure with all the heavy lifting the grunt team have done to make Grunt work everywhere, it might just work. The tests are not supported for windows.
+This project is a plugin for Grunt.JS that gives one the ability to spawn processes. This project has been tested heaps on windows but most of the development happens from a Unix flavour of some description(Mac).
 
 ## How do I use it?
 
@@ -19,7 +22,7 @@ You can install this plugin via the node package manager.
 
 ### package.json
 
-It is also good to create yourself a package.json file and emebed it in the dependencies or devDependencies section. For more please click [here](https://npmjs.org/doc/json.html). Example below: 
+It is also good to create yourself a package.json file and embed this in your devDependencies section. For more please click [here](https://npmjs.org/doc/json.html). Example below: 
 
     {
       "name": "my-project",
@@ -139,7 +142,7 @@ OR
 
     grunt spawn:test
 
-Here is a brief description of the elements involved:
+Here is a brief description of the elements involved when configuring a grunt-spawn subtask:
 
  - `command`: "echo" -> Any command
  - `commandArgs`: ["{0}"] -> commandArgs where '{0}' is a placeholder for a file
@@ -164,16 +167,13 @@ passed to nodejs spawn.
 
 If you are not scanning for any wildcard patterns and you would like to pass your
 arguments as a space separated array to a single command then you would need to 
-set this option to true. If you dont, then each result found within the wildcard
-matching pattern will be run individually again the command. So if three files are 
+set this option to true. If you dont this, then each result found within the wildcard
+matching pattern will be run individually against the command. So if three files are 
 found, the command will be run 3 times. 
 
 ### When to 'passThrough'
 
-If you are not interested in scanning the filesystem and have a command that does
-not require any input from grunt-spawn then you can use this option. This will 
-bypass any scanning done on the current directory. This can dramatically speed
-up what you are trying to do. 
+If you are not interested in scanning the filesystem and have a command that does not require any file based input from grunt-spawn then you can use set this option to true. This will bypass any scanning done on the current directory. This can dramatically speed up the execution time of things. 
 
 ### Express example
 
@@ -232,4 +232,5 @@ Included some example output from an express process.
     GET /favicon.ico 404 57.264 ms - 1186
 
 
-Any problems, please raise issues. 
+More examples coming soon. Any problems, please raise issues.
+

@@ -3,7 +3,7 @@
   "version": "1.1.70",
   "private": false,
   "author": "fir3pho3nixx@gmail.com",
-  "description": "A process launcher that does what it says on the tin",
+  "description": "A process launcher designed for when you dont have a grunt plugin, or know the console command but cannot be bothered adding yet another plugin to your arsenal of growing tools :)",
   "keywords": [
     "grunt",
     "spawn",
