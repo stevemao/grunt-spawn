@@ -1,6 +1,6 @@
 {
   "name": "grunt-spawn",
-  "version": "1.1.71",
+  "version": "1.1.72",
   "private": false,
   "author": "fir3pho3nixx@gmail.com",
   "description": "A process launcher designed for when you dont have a grunt plugin, or know the console command but cannot be bothered adding yet another plugin to your arsenal of growing tools :)",
