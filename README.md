@@ -22,7 +22,7 @@ You can install this plugin via the node package manager.
 
 ### package.json
 
-It is also good to create yourself a package.json file and embed this in your devDependencies section. For more please click [here](https://npmjs.org/doc/json.html). Example below: 
+It is also good to create yourself a package.json file and embed this in your devDependencies section. For more please click [here](https://docs.npmjs.com/files/package.json). Example below: 
 
     {
       "name": "my-project",
